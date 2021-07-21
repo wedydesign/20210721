@@ -5,8 +5,47 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>박윤서 포트폴리오</title>
+  <!-- jQuery -->
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="http://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+  <!-- ajax -->
+  <script>
+    $(function () {
+      $( '#container' ).load( 'main.html' );
+      
+      var nav = $( 'nav li' );
+      nav.eq(0).click( function () {
+        $( '#container' ).load( 'main.html' );
+      } );
+      nav.eq(1).click( function () {
+        $( '#container' ).load( 'about_me.html' );
+      } );
+      nav.eq(2).click( function () {
+        $( '#container' ).load( 'support_field.html' );
+      } );
+      nav.eq(3).click( function () {
+        $( '#container' ).load( 'webdesign_portfolio.html' );
+      } );
+      nav.eq(4).click( function () {
+        $( '#container' ).load( 'customer_service.html' );
+      } );
+    });
+  </script>
 </head>
 <body>
-  
+  <nav>
+    <ul>
+      <li>홈</li>
+      <li>인적사항</li>
+      <li>지원분야</li>
+      <li>웹디자인포트폴리오</li>
+      <li>고객지원</li>
+    </ul>
+  </nav>
+
+  <!-- ajax -->
+  <div id="container">
+    메인 페이지의 컨텐츠 영역
+  </div>
 </body>
 </html>
