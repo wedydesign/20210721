@@ -1,0 +1,31 @@
+/* browser CSS */
+@media screen and (min-width: 960px) {
+  body {
+    width: 960px;
+    margin: 0 auto;
+  }
+  body * {
+    margin: 0;
+    padding: 0;
+    font: "맑은고딕";
+    font-size: "16px";
+    line-height: 1.5;
+  }
+  #logo {
+    width: 25%;
+  }
+  ul {
+    height: 48px;
+  }
+  li {
+    list-style: none;
+    float: left;
+    margin-right: 40px;
+    line-height: 48px;
+    font-weight: bold;
+  }
+  .on{
+    font-weight: normal;
+    color: hsl( 0, 0%, 20% );
+  }
+}
