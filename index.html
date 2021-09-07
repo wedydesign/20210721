@@ -51,6 +51,13 @@
       width: 960px;
       margin: 0 auto;
     }
+    body * {
+      margin: 0;
+      padding: 0;
+      font: "맑은고딕";
+      font-size: "16px";
+      line-height: 1.5;
+    }
     ul {
       height: 48px;
     }
@@ -58,6 +65,12 @@
       list-style: none;
       float: left;
       margin-right: 40px;
+      line-height: 48px;
+      font-weight: bold;
+    }
+    .on{
+      font-weight: normal;
+      color: hsl( 0, 0%, 20% );
     }
   </style>
 </head>
@@ -65,7 +78,7 @@
   <div id="logo"><img src="https://github.com/wedydesign/image/blob/master/20210907_01.jpg?raw=true" alt="웨디디자인"></div>
   <nav>
     <ul>
-      <li>홈</li>
+      <li class="on">홈</li>
       <li>인적사항</li>
       <li>지원분야</li>
       <li>웹디자인포트폴리오</li>
