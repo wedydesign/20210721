@@ -10,15 +10,13 @@
   <mata name="Publisher" content="wedydesign"></mata>
   <title>박윤서 포트폴리오</title>
   <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-204389769-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-204389769-1');
-</script>
-
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-204389769-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-204389769-1');
+  </script>
   <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- ajax -->
@@ -53,6 +51,10 @@
       width: 960px;
       margin: 0 auto;
     }
+    li {
+      list-style: none;
+      float: left;
+    }
   </style>
 </head>
 <body>
@@ -67,7 +69,10 @@
       <li>할 일</li>
     </ul>
   </nav>
+0
   <!-- ajax -->
-  <div id="container"></div>
+  <div id="container">
+    로딩중
+  </div>
 </body>
 </html>
