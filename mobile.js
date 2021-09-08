@@ -13,7 +13,7 @@ $( function () {
         $( "nav" ).removeClass( "nav_on" );
     } );
 } );
-/* 
+/*
 네비게이션을 미들 높이에 위치하기.
 CSS로는 불가능하다.
 브라우저의 높이 값을 내장객체에서 받기.
@@ -25,6 +25,12 @@ $( function () {
     console.log(wh);
     var whm = wh/2;
     var whmd = whm-24;
-
-    $( "ul" ).css( "margin-top", whmd );
+    $( ".fa-bars" ).click( function() {
+       $( "ul" ).css( "margin-top", whmd );
+    } );
 } );
+/*
+브라우저 해상도에서도
+마진탑이 적용되는데 어떻게 하지?ㅠ
+클릭으로 감쌀까?
+*/
