@@ -28,4 +28,10 @@
     font-weight: normal;
     color: hsl( 0, 0%, 20% );
   }
+  .fa-bars {
+    display: none;
+  }
+  nav {
+    display: block; 
+  }
 }

@@ -27,4 +27,10 @@
     font-weight: normal;
     color: hsl( 0, 0%, 20% );
   }
+  .fa-bars {
+    display: block;
+  }
+  nav {
+    display: none; 
+  }
 }
