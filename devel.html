@@ -107,14 +107,57 @@ html에서 데이터를 출력할 수 있다^!^
 
 - 예시) 데이터 저장
 - INSERT INTO (필드,필드) VALUE (데이터, 데이터) 형식으로 퀴리문을 작성한다.
+app.get('/insert', (request, response) => {
+    fs.readFile('게시판명.html'm 'utf-8', (error, data) => {
+        response.end(data);
+    } );
+} );
+app.post('/insert', (request, response) => {
+    let body = request.body;
+    client.query('INSERT INTO 테입ㄹ명 (필드) VALUE (?, ?, ?')'', [body.필드명]
+} );
+/%
+게시판.html에서
+form method="post"
+... input type="text" name="필드명"
+... input type="submit"
+%/
 
 - 예시) 데이터 삭제
 - delete from 테이블명 where 필드명(키)="필드값"; //조건으로 프라이머 키를 사용하지 않으면 전체 데이터가 삭제되니, 주의하기 바란다.
-app.get('/insert', (request, response => {
-    client.query('DELETE FROM 테이블명 WHERE 필드명=?', [request.params.id], () => {
-        response.redirect('/');
+app.get('/delete/:id', (request, response) => { // /:id를 하는 이유는 전체 다 삭제하지 않기 위해서
+    client.query('DELETE FROM 테이블명 WHERE 필드명(key)=?', [request.params.id], () => { //필드값대신 클릭한 필드값을 지우기 위해서 [ㅇㅇ]을 사용함.
+        () => {
+            response.radirect('/');
+        } );
     });
 } );
 
 - 예시) 데이터 수정
 - update 테이블명 set 필드명="필드값" where 필드명(key)="필드값"//조건으로 프라이머 키를 사용하지 않으면 전체 데이터가 변경되니, 주의하기 바란다.
+app.get('/edit/:id', (request, response) => {
+    fs.readFile('게시판명.html'm 'utf-8', (error, data) => {
+        
+        client.query('UPDATE 테입ㄹ명 (필드) VALUE (?, ?, ?')'', [body.필드명],
+        (error, result)  => {
+            response.send(ejs.render(data, {
+            data: result[0]
+        } ) );
+    } );
+} );
+app.post('/insert', (request, response) => {
+    let body = request.body;
+    
+} );
+/%
+게시판.html에서
+form method="post"
+... input type="text" name="필드명" value<%= data.id %> disable/>
+... input type="submit"
+%/
+app.post('/edit/:id', (request, response) => {
+    let body = request.body;
+
+    client.query('UPDATE 테입ㄹ명 SET 필드=?, 필드=? VALUES (?, ?), [body.필드, body.필드], (error, result) => {
+    } );
+} );
