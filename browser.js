@@ -32,5 +32,10 @@ $(function () {
       $( '#container' ).load( 'reminder.html' );
       $( 'li' ).removeClass( 'on' );
       $( 'li' ).eq(5).addClass( 'on' );
-  } );
-});
+      } );
+      nav.eq(6).click( function () {
+        $( '#container' ).load( 'reminder.html' );
+        $( 'li' ).removeClass( 'on' );
+        $( 'li' ).eq(6).addClass( 'on' );
+        } );
+    });
