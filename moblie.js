@@ -5,11 +5,9 @@ x를 누르면 nav는 다시 none이 된다.
 */
 $( function () {
     $( ".fa-bars" ).click( function() {
-        $( "nav" ).css( "display", "block" );
         $( "nav" ).addClass( "nav_on" );
     } );
     $( ".fa-arrow-left" ).click( function () {
-        $( "nav" ).css( "display", "none" );
         $( "nav" ).removeClass( "nav_on" );
     } );
 } );
@@ -22,10 +20,9 @@ x값을 반으로 나눠서
 */
 $( function () {
     var wh = $( window ).height();
-    console.log(wh);
     var whm = wh/2;
     var whmd = whm-24;
-    
+
     $( ".fa-bars" ).click( function() {
        $( "ul" ).css( "margin-top", whmd );
     } );
