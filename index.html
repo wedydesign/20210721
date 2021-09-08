@@ -19,58 +19,25 @@
   </script>
   <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <!-- ajax -->
-  <script>
-    $(function () {
-      $( '#container' ).load( 'main.html' );
-      
-      var nav = $( 'nav li' );
-      nav.eq(0).click( function () {
-        $( '#container' ).load( 'main.html' );
-        $( 'li' ).removeClass( 'on' );
-        $( 'li' ).eq(0).addClass( 'on' );
-      } );
-      nav.eq(1).click( function () {
-        $( '#container' ).load( 'about_me.html' );
-        $( 'li' ).removeClass( 'on' );
-        $( 'li' ).eq(1).addClass( 'on' );
-      } );
-      nav.eq(2).click( function () {
-        $( '#container' ).load( 'support_field.html' );
-        $( 'li' ).removeClass( 'on' );
-        $( 'li' ).eq(2).addClass( 'on' );
-      } );
-      nav.eq(3).click( function () {
-        $( '#container' ).load( 'webdesign_portfolio.html' );
-        $( 'li' ).removeClass( 'on' );
-        $( 'li' ).eq(3).addClass( 'on' );
-      } );
-      nav.eq(4).click( function () {
-        $( '#container' ).load( 'customer_service.html' );
-        $( 'li' ).removeClass( 'on' );
-        $( 'li' ).eq(4).addClass( 'on' );
-      } );
-      nav.eq(5).click( function () {
-        $( '#container' ).load( 'reminder.html' );
-        $( 'li' ).removeClass( 'on' );
-        $( 'li' ).eq(5).addClass( 'on' );
-      } );
-    });
-  </script>
+  <script src="/browser.js"></script>
+  <script src="/mobile.js"></script>
+  <!-- style -->
   <link rel="stylesheet" href="/browser.css">
   <link rel="stylesheet" href="/mobile.css">
+  <!-- font awsome -->
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' integrity='sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==' crossorigin='anonymous'/>
 </head>
 <body>
   <div id="logo"><a href="wedydesign.com"></a><img src="https://github.com/wedydesign/image/blob/master/20210907_01.jpg?raw=true" alt="웨디디자인"></a></div>
-  <nav>
-    <ul>
+  <nav class="nav_on">
+    <ul id="gnb">
       <li class="on">홈</li>
       <li>인적사항</li>
       <li>지원분야</li>
       <li>웹디자인포트폴리오</li>
       <li>고객지원</li>
       <li>할 일</li>
+      <li><i class="fas fa-arrow-left"></i></li>
     </ul>
   </nav>
   <i class="fas fa-bars"></i>
