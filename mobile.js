@@ -28,6 +28,9 @@ $( function () {
     $( ".fa-bars" ).click( function() {
        $( "ul" ).css( "margin-top", whmd );
     } );
+    $( ".fa-arrow-left" ).click( function () {
+        $( "ul" ).css( "margin-top", "0" );
+    } );
 } );
 /*
 브라우저 해상도에서도
