@@ -53,7 +53,7 @@
 
             client.connect(); //db실행
 
-            /* query ('sql', (에러에 관한 매개변수, 접속결과에 대한 매개변수)); */
+            /* query ('sql', (에러를 받는 매개변수, 접속결과를 받는 매개변수)); */
             client.query ('SELECT * from portfolio', (error, results, fields) => {
                 if (!error) {
                     console.log(results); //접속결과로 어디가 문제이다를 알 수 있다.
@@ -65,7 +65,9 @@
         </li>
         <li>node db_connection</li>
     </ul>
-    <li>CRUD</li>
+</ul>
+<ul>
+    <li><b>CRUD</b></li>
     <ul>
         <li>CRUD는 DB의 가장 기본적인 기능입니다.</li>
         <li>Create, Read, Update, Delete라고 해서 CRUD라고 합니다.</li>
