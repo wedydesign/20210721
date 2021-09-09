@@ -36,6 +36,30 @@
                 <li>) ;</li>
             </ul>
     </ul>
+    <li>mysql 모듈을 이용하여 데이터베이스에 접속하는 방법은 무엇일까요?</li>
+    <ul>
+        <li>npm install mysql</li>
+        <li>
+            /* createConnection (user, password); */
+            const mysql = require ('mysql');
+
+            let client = mysql.createConnection ({
+                user: 'root',
+                password: 'qkr8dbs6tj4@',
+                database: 'mydb'
+            });
+
+            /* query (sql[. callback]); */
+            client.query ('USE Company');
+            client.query ('SELECT * from portfolio', (error, result, fields) => {
+                if(error) {
+                    console.log ('error query');
+                } else {
+                    console.log (result);
+                }
+            });
+        </li>
+    </ul>
     <li>CRUD</li>
     <ul>
         <li>CRUD는 DB의 가장 기본적인 기능입니다.</li>
@@ -43,9 +67,9 @@
         <li>CRUD를 만들기 위해서 express 모듈, body parser 모듈, ejs 모듈, MySQL 모듈을 설치를 합니다.</li>
         <ul>
             <li>npm install -g express-generator</li>
-            <li>npm install body parser</li>
-            <li>npm install ejs</li>
-            <li>npm npm install mysql</li>
+            <li>npm install -g body parser</li>
+            <li>npm install ejs --save</li>
+            <li>npm install -g mysql</li>
         </ul>
         <li>예시) 데이터 조회</li>
         <ul>
@@ -60,12 +84,13 @@
                 const bodyParser = require('body-parser');
                 const mysql = require('mysql');
 
-                /* DB connect */
-                let client =mysql.createConnection( { // mysql 객체의 함수, 속성엔 user와 password가 있다.(필수 입력)
-                    user : '';
-                    database : '';
-                    password : "";
-                } );
+                /* createConnection (user, password); */
+                let client = mysql.createConnection ({
+                    user: 'root',
+                    password: '****,
+                    database: '****'
+                });
+
                 /* 웹서버 생성 */
                 let app = express();
                 app.user(bodyParser.urlencoded( { extended: false} )); //post를 사용하기 때문에 인코딩을 해야한다.
@@ -173,7 +198,7 @@
         <li>bin 폴더는 프로그램 실행파일이 있고 www 파일을 싱행해서 프레임워크를 실행한다.</li>
         <li>public 폴더는 express 모듈의 static 미들웨어를 사용하여 웹 서버에 로딩하고 자바스크립트, css, 그림파일 등의 리소스 파일을 생성한다.</li>
         <li>routes 폴더는 페이지 라우트와 관련되어 있는 모듈이며 index.js. 파일과 routes 파일이 있다.</li>
-        <li>views 폴더는 html 대신 ejs랑, jade라고? 백날 싫어해서 뭐하냐... 우리는 적응의 동물이다.</li>
+        <li>views 폴더는 .ejs(ejs모듈은 표현식을 HTML 형식으로 변환한다.) .jade(jade 모듈은 기본 형식을 html 문자열로 바꿀 수 있는 함수를 생성함)</li>
         <li>app.js는 프로젝트의 중심이 되는 파일이며 package.json 파일은 현재 프로젝트와 관련된 정보와 모듈을 설치하는데 필요한 내용을 담고 있다.</li>
     </ul>
 </ul>
@@ -184,3 +209,8 @@
 - 깃허브 도움말에서 네임서버를 찾는다.
 * 보통 aws이나 다른 서버같은 경우 네임서버가 4차까지 있는 반면에, 깃허브는 1개 뿐이다. 처음하는 사람은 열라 햇깔림.
 - 카페24 예시) 카페24 도메인-네임서버> 4칸 전부 다, 내용물 삭제> 첫 칸만 깃허브 도움말에 있는 네임서버를 복붙한다.
+
+웹디자인포트폴리오 게시판부터 만들어야지
+하란데로 했는데 되는게 없네
+구글링... github express mysql CRUD
+아 mysql 커멘드라인을 node.js로 가져와야겠다.
