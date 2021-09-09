@@ -11,12 +11,15 @@ let client = mysql.createConnection ({
     database: 'mydb'
 });
 
+/* use mydb */
+client.connect();
+
 /* app.js */
 let app = express();
 app.use(bodyParser.urlencoded ({extended: false}));
 
 app.get('/', (request, response) => {
-    fs.readFile('test.html', 'utf-8', (error, data) => {
+    fs.readFile('webdesign_portfolio.html', 'utf-8', (error, data) => {
         /* query (sql[. callback]); */
         client.query ('SELECT * from portfolio', (error, result, fields) => {
             response.send (ejs.render (data, {

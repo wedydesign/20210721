@@ -1,3 +1,4 @@
+<p>20210909</p>
 <ul>
     <li><b>깃 명령어 필요없이, vscode github 연동.</b></li>
     <li>깃허브로 계정 생성</li>
@@ -10,7 +11,7 @@
 </ul>
 
 <ul>
-    <li><b>게시판 만들기</b></li>
+    <li><b>mysql</b></li>
     <li>node.js 다운로드</li>
     <li>(MySQL다운하기 전에 win+x> y> 이 pc의 이름 바꾸기> 한글이름을 영문이름으로... 한글이름으로 했다가 오류나면 재설치 해야 합니다.)</li>
     <li>(재설치 시, C\programData    (programFiles가 아니다!!!!)    \mySQL를 삭제해야 합니다.)</li>i>
@@ -19,7 +20,7 @@
         <li>https://downloads.mysql.com/archives/installer/</li>
         <li>설치는 NEXT 버튼을 계속 클릭하고, 마지막에 root 비밀번호를 잊어서는 안 됩니다.</li>
     </ul>
-    <li>Mysql version command line로 SQL명령문을 사용하여 데이터베이스를 다룬다.</li>
+    <li><b>Mysql version command line로 SQL명령문을 사용하여 데이터베이스를 다룬다.</b></li>
     <ul>
         <li>Mysql version command line 또는 mysql -u root -p //vscode터미널에서 mysql 커멘드라인 열기</li>
         <li>비밀번호</li>
@@ -37,7 +38,7 @@
                 <li>) ;</li>
             </ul>
     </ul>
-    <li>node.js mysql 예제</li>
+    <li><b>node.js mysql 예제</b></li>
     <ul>
         <li>npm install mysql</li>
         <li>
@@ -51,7 +52,8 @@
                 database: 'mydb'
             });
 
-            client.connect(); //db실행
+            /* db실행 */
+            client.connect();
 
             /* query ('sql', (에러를 받는 매개변수, 접속결과를 받는 매개변수)); */
             client.query ('SELECT * from portfolio', (error, results, fields) => {
@@ -67,13 +69,67 @@
     </ul>
 </ul>
 <ul>
+    <li><b>express</b></li>
+    <li>npm install express</li>
+    <li>익스프레스 프로젝트 생성</li>
+        <li>express Helloexpress //익스프레스 프로젝트를 깃허브에 생성할 수 있구나</li>
+        <li>cd Helloexpress</li>
+        <li>npm install //package.json 안에 express 메모함.</li>
+        <li>SET DEBUG=helloexpress:* & npm start //웹서버 run</li>
+        <li>127.0.0.1:3000</li>
+    </ul>
+    <li>git icon > + > v > 커밋메시지아무거나 > 왼쪽 하단 새로고침 버튼. [변경된 사항이 1000개 정도 있을텐데, 이거 1000개가 다 해체되서 올라가는 거 아니야?라고 걱정할 필요가 없다. 폴더채로 업로드된다.]</li>
+    <li><b>디렉토리 구조</b></li>
+    <ul>
+        <li>bin 폴더는 프로그램 실행파일이 있고 www 파일을 싱행해서 프레임워크를 실행한다.</li>
+        <li>public 폴더는 express 모듈의 static 미들웨어를 사용하여 웹 서버에 로딩하고 자바스크립트, css, 그림파일 등의 리소스 파일을 생성한다.</li>
+        <li>routes 폴더는 페이지 라우트와 관련되어 있는 모듈이며 index.js. 파일과 routes 파일이 있다.</li>
+        <li>views 폴더는 .ejs(ejs모듈은 표현식을 HTML 형식으로 변환한다.) .jade(jade 모듈은 기본 형식을 html 문자열로 바꿀 수 있는 함수를 생성함)</li>
+        <li>app.js는 프로젝트의 중심이 되는 파일이며 package.json 파일은 현재 프로젝트와 관련된 정보와 모듈을 설치하는데 필요한 내용을 담고 있다.</li>
+    </ul>
+    <li><b>express 예제</b></li>
+    <li>npm install express</li>
+    <li>
+        let express = require ('express');;
+        let app = express(); 
+
+        /* 라우터 기본, 원형 */
+        app.get('/', function (request, response) {
+            response.send ('index.html')
+        });
+
+        /*
+        미들웨어 함수란?
+        응용 프로그램의 요청&응답 주기에 함수를 액세스 할 수 있는 함수입니다.
+        그리고 express 라우터의 함수로 호출될 때 현재 미들웨어에 성공하는 미들웨어를 실행합니다.
+        메소드> 미들웨어 함수가 적용되는 경로> 미들웨어 기능> http요청인수> http응답인수> 콜백인수
+         */
+        let middle = app.get('/', function(request, response, next ) {
+            response.send('Hello World!');
+         });
+
+         /* 미들웨어 함수 호출 */
+         app.use(middle); 
+         
+         /* 호출과 정의를 동시에 쓰는 경우, 앱이 요청을 받을 때마다 실행됩니다.*/
+        app.use('/', function (request, response, next) {
+            response.send('Hello World!');;
+        })
+
+        app.listen (3000);
+    </li>
+</ul>
+<ul>
+    <li><b>node.js mysql express</b></li>
+</ul>
+<ul>
     <li><b>CRUD</b></li>
     <ul>
         <li>CRUD는 DB의 가장 기본적인 기능입니다.</li>
         <li>Create, Read, Update, Delete라고 해서 CRUD라고 합니다.</li>
         <li>CRUD를 만들기 위해서 express 모듈, body parser 모듈, ejs 모듈, MySQL 모듈을 설치를 합니다.</li>
         <ul>
-            <li>npm install expressr</li>
+            <li>npm install express</li>
             <li>npm install body parser</li>
             <li>npm install ejs</li>
             <li>npm install mysql</li>
@@ -182,31 +238,6 @@
                 } );
             </li>
         </ul>
-    </ul>
-    <li>익스프레스 다운로드</li>
-    <ul>
-        <li>npm install -g express-generator [-generator를 붙이면, express는 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는 배치파일이 아닙니다.를 예방할 수 있습니다.]</li>
-    </ul>
-    <li>익스프레스 프로젝트 생성</li>
-    <ul>
-        <li>익스프레스 프로젝트를 깃허브에 생성할 수 있구나</li>
-        <li>express Helloexpress //프로젝트생성</li>
-        <li>cd Helloexpress //프로젝트로 이동</li>
-        <li>npm install //기본 index.html를 보러갑시다.</li>
-        <li>SET DEBUG=helloexpress:* & npm start //시작</li>
-        <li>127.0.0.1:3000</li>
-    </ul>
-    <li>express 프로젝트를 깃허브에 커밋하기.</li>
-    <ul>
-        <li>변경된 사항이 1000개 정도 있을텐데, 이거 1000개가 다 해체되서 올라가는 거 아니야?라고 걱정할 필요가 없다. 폴더채로 커밋된다.</li>
-    </ul>
-    <li>프로젝트 설명</li>
-    <ul>
-        <li>bin 폴더는 프로그램 실행파일이 있고 www 파일을 싱행해서 프레임워크를 실행한다.</li>
-        <li>public 폴더는 express 모듈의 static 미들웨어를 사용하여 웹 서버에 로딩하고 자바스크립트, css, 그림파일 등의 리소스 파일을 생성한다.</li>
-        <li>routes 폴더는 페이지 라우트와 관련되어 있는 모듈이며 index.js. 파일과 routes 파일이 있다.</li>
-        <li>views 폴더는 .ejs(ejs모듈은 표현식을 HTML 형식으로 변환한다.) .jade(jade 모듈은 기본 형식을 html 문자열로 바꿀 수 있는 함수를 생성함)</li>
-        <li>app.js는 프로젝트의 중심이 되는 파일이며 package.json 파일은 현재 프로젝트와 관련된 정보와 모듈을 설치하는데 필요한 내용을 담고 있다.</li>
     </ul>
 </ul>
 
