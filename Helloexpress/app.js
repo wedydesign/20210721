@@ -21,8 +21,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.get('/product', (request, response) => {
-  response.render('product', {
-    title : 'product page'
+  response.render('product/', {
+    title : 'product index page'
   } );
 } );
 app.use('/users', usersRouter);
