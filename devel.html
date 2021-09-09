@@ -164,34 +164,24 @@ app.post('/edit/:id', (request, response) => {
     } );
 } );
 
-/*
-익스프레스 프로젝트를 깃허브에 생성할 수 있구나
- */
-- npm install -g express-generator //express는 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는 배치파일이 아닙니다.의 해결법
+1) 익스프레스 다운로드
+- npm install -g express-generator 
+* -generator를 붙이면, express는 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는 배치파일이 아닙니다.를 예방할 수 있다.
+
+2) 익스프레스 프로젝트 생성 //익스프레스 프로젝트를 깃허브에 생성할 수 있구나
 - express Helloexpress //프로젝트생성
 - cd Helloexpress //프로젝트로 이동
 - npm install //기본 index.html를 보러갑시다.
 - SET DEBUG=helloexpress:* & npm start //시작
 - 127.0.0.1:3000
 
-2) 프로젝트 구조
-- bin폴더는 프로그램 실행과 관련된 파일이 들어 있고 이 폴더 내부에 www파일을 싱행해서 프레임워크를 실행한다.
-- public 폴더는 express 모듈의 static 미들웨어를 사용하여 웹 서버에 로딩되는 폴더이며 자바 스크립트 파일, css, image 파일 등 리소스 파일을 생성한다.
-- route 폴더는 페이지 라우트와관련된 모듈이며 index.js 파일과 routes 파일이 있다.
-- views 폴더는 ejs 파일 또는 jade 파일과 같은 템플릿 파일이 저장된다.
-- app.js 파일은 프로젝트에서 중심이 되는 파일이다.
-- package.json 파일은 현재 프로젝트와 관련된 정보와 모듈을 설치하는 데 필요한 내용을 담고 있다.
+2) express 프로젝트를 깃허브에 커밋하기.
+* 변경된 사항이 1000개 정도 있을텐데, 이거 1000개가 다 해체되서 올라가는 거 아니야?라고 걱정할 필요가 없다. 폴더채로 커밋된다.
 
-3) html 대신 ejs랑, jade라고? html을 사용할 수 있는 편법.
-- https://stackoverflow.com/questions/11495595/using-html-in-express-instead-of-jade
+3) 프로젝트 설명
+- bin 폴더는 프로그램 실행파일이 있고 www 파일을 싱행해서 프레임워크를 실행한다.
+- public 폴더는 express 모듈의 static 미들웨어를 사용하여 웹 서버에 로딩하고 자바스크립트, css, 그림파일 등의 리소스 파일을 생성한다.
+- routes 폴더는 페이지 라우트와 관련되어 있는 모듈이며 index.js. 파일과 routes 파일이 있다.
+- views 폴더는 html 대신 ejs랑, jade라고? 백날 싫어해서 뭐하냐... 우리는 적응의 동물이다.
+- app.js는 프로젝트의 중심이 되는 파일이며 package.json 파일은 현재 프로젝트와 관련된 정보와 모듈을 설치하는데 필요한 내용을 담고 있다.
 
-4) 정석대로 해보자
-- views 폴더에 produt.jade를 생성한다.
-- 난 절대 jade로 코딩 못하겠다. 라우터를 해봐야하니까 계속하자
-- app.js에 들어가서 기본 / 뒤에 prooduct라고 라우터를 준다.
-- 뭐 하나 파일 만들 때마다 라우터를 아래처럼 연결해준다.
-app.get('/product', (request, response) => {
-    response.render('product/', {
-      title : 'product page'
-    } );
-  } );
