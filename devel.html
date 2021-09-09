@@ -21,27 +21,23 @@
     </ul>
     <li>Mysql version command line로 SQL명령문을 사용하여 데이터베이스를 다룬다.</li>
     <ul>
-        <li>Mysql version command line</li>
+        <li>Mysql version command line 또는 mysql -u root -p //vscode터미널에서 mysql 커멘드라인 열기</li>
         <li>root 비밀번호</li>
         <li>create database 데이터베이스명;</li>
-        <li>creat table 테이블명 ();</li>
+        <li>use mydb;</li>
+        <li>create table 테이블명 ();</li>
             <ul>
                 <li>creat table 테이블명 (</li>
                 <li>필드명 자료형 필드의 속성명</li>
                 <li>자료형: varchar 문자열, int 정수 숫자, double 실수 숫자.</li>
                 <li>필드의 속성명 : NOT NULL 반드시 입력해야 하는 필드, AUTO_INCREMENT 자동으로 숫자가 증가하게 만든다. PRIMARY KEY 기본 키로 지정한다.</li>
-                <li>예제) id int primary key</li>
+                <li>예제) id int primary key,</li>
                 <li>예제) name varchar</li>
                 <li>테이블 생성할 때 표의 형태까지 만드는구나, 구글링하면 추가, 삭제, 수정있당.</li>
                 <li>) ;</li>
             </ul>
     </ul>
-    <li>mysql 모듈을 이용하여 데이터베이스에 접속하는 방법은 무엇일까요?</li>
-    <li>아이고 mysql이 환경변수에 등록이 안되어 있다니 검색해서 환경변수 등록해주셈</li>
-    <li>mysql -u root -p</li>
     <ul>
-        <li></li>
-        <li>https://opentutorials.org/course/3347/21185</li>
         <li>npm install mysql</li>
         <li>
             /* createConnection (user, password); */
@@ -57,16 +53,16 @@
             client.connect(); //db실행
 
             /* query ('sql', (에러에 관한 매개변수, 접속결과에 대한 매개변수)); */
-            client.query ('SELECT * from portfolio', (error, result) => {
-                if(error) {
-                    console.log ('error query');
+            client.query ('SELECT * from portfolio', (error, results, fields) => {
+                if (!error) {
+                    console.log(results); //접속결과로 어디가 문제이다를 알 수 있다.
+                    console.log(fields);
                 } else {
-                    console.log (result);
+                    console.log(error);
                 }
             });
-
-            client.end(); //db종료
         </li>
+        <li>node db_connection</li>
     </ul>
     <li>CRUD</li>
     <ul>
