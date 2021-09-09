@@ -12,11 +12,7 @@ client.connect(); //db실행
 
 /* query ('sql', (에러에 관한 매개변수, 접속결과에 대한 매개변수)); */
 client.query ('SELECT * from portfolio', (error, result) => {
-    if(error) {
-        console.log ('error query');
-    } else {
-        console.log (result);
-    }
+    
 });
 
 client.end(); //db종료
