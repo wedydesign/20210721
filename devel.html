@@ -38,7 +38,7 @@
                 <li>) ;</li>
             </ul>
     </ul>
-    <li><b>node.js mysql 예제</b></li>
+    <li><b>mysql 테스트</b></li>
     <ul>
         <li>npm install mysql</li>
         <li>
@@ -70,15 +70,15 @@
 </ul>
 <ul>
     <li><b>express</b></li>
+    <li>익스프레스 프로젝트를 깃허브에 생성할 수 있구나. 원래는 애플리케이션을 생성할 때, 직접 다 쓰고 테스트하면 백날 걸리는데 쉽게 한다.</li>
     <li>npm install express</li>
     <li>익스프레스 프로젝트 생성</li>
-        <li>express Helloexpress //익스프레스 프로젝트를 깃허브에 생성할 수 있구나</li>
+        <li>express Helloexpress</li>
         <li>cd Helloexpress</li>
         <li>npm install //package.json 안에 express 메모함.</li>
         <li>SET DEBUG=helloexpress:* & npm start //웹서버 run</li>
         <li>127.0.0.1:3000</li>
     </ul>
-    <li>git icon > + > v > 커밋메시지아무거나 > 왼쪽 하단 새로고침 버튼. [변경된 사항이 1000개 정도 있을텐데, 이거 1000개가 다 해체되서 올라가는 거 아니야?라고 걱정할 필요가 없다. 폴더채로 업로드된다.]</li>
     <li><b>디렉토리 구조</b></li>
     <ul>
         <li>bin 폴더는 프로그램 실행파일이 있고 www 파일을 싱행해서 프레임워크를 실행한다.</li>
@@ -87,40 +87,112 @@
         <li>views 폴더는 .ejs(ejs모듈은 표현식을 HTML 형식으로 변환한다.) .jade(jade 모듈은 기본 형식을 html 문자열로 바꿀 수 있는 함수를 생성함)</li>
         <li>app.js는 프로젝트의 중심이 되는 파일이며 package.json 파일은 현재 프로젝트와 관련된 정보와 모듈을 설치하는데 필요한 내용을 담고 있다.</li>
     </ul>
-    <li><b>express 예제</b></li>
-    <li>npm install express</li>
+    <li>git icon > + > v > 커밋메시지아무거나 > 왼쪽 하단 새로고침 버튼. [변경된 사항이 1000개 정도 있을텐데, 이거 1000개가 다 해체되서 올라가는 거 아니야?라고 걱정할 필요가 없다. 폴더채로 업로드된다.]</li>
+    <li><b>express 테스트</b></li>
     <li>
-        let express = require ('express');;
-        let app = express(); 
+        let express = require ('express');
+        let app = express(); // 객체, node.js는 객체를 이벤트라고 하는구나
 
         /* 라우터 기본, 원형 */
         app.get('/', function (request, response) {
-            response.send ('index.html')
+            response.send ('index.html'); //다양한 응답을 전송
         });
 
         /*
         미들웨어 함수란?
         응용 프로그램의 요청&응답 주기에 함수를 액세스 할 수 있는 함수입니다.
         그리고 express 라우터의 함수로 호출될 때 현재 미들웨어에 성공하는 미들웨어를 실행합니다.
-        메소드> 미들웨어 함수가 적용되는 경로> 미들웨어 기능> http요청인수> http응답인수> 콜백인수
-         */
+        ('미들웨어 함수가 적용되는 경로'. 미들웨어 기능(http요청인수> http응답인수> 콜백인수) {} );
+        */
         let middle = app.get('/', function(request, response, next ) {
             response.send('Hello World!');
          });
 
-         /* 미들웨어 함수 호출 */
-         app.use(middle); 
-         
-         /* 호출과 정의를 동시에 쓰는 경우, 앱이 요청을 받을 때마다 실행됩니다.*/
-        app.use('/', function (request, response, next) {
-            response.send('Hello World!');;
-        })
+         /*
+         템플릿 엔진이란?
+         템플릿(view)을 만들기 위해 jsp같이 html 대신 사용하는 언어이다. node.js의 express는 ejs를 사용한다.
+         렌더링이란?
 
+         우리가 express에서 템플릿 엔진을 쓰려면
+         별도의 ejs 모듈을 써야한다.
+         */
+
+        /* server run */
         app.listen (3000);
+    </li>
+    <li>템플릿 엔진 테스트</li>
+    <li>
+        const mysql = require('mysql');
+        const express = require ('express');
+        const ejs = require ('ejs');
+
+        let client = mysql.createConnection ({
+            host: 'localhost',
+            user: 'root',
+            password: 'qkr8dbs6tj4@',
+            database: 'mydb'
+        });
+        
+        /* use mydb */
+        client.connect();
+
+        let app = express();
+;
+
+        /* 라우터 기본, 원형 */
+        app.get('/views', function (request, response) {
+            response.send ('webdesign_portfolio.html'); //다양한 응답을 전송
+        });
+
+        /*
+        템플릿 엔진 모듈이란?
+        특정 형식의 문자열 (<% 자바스크립트 %> 또는 <%= 출력문 %>)을 HTML형식으로 변환한다.
+        .render (); //특정 형식의 문자열을 html 문자열로 변경해 주는 메소드.
+        express는 ejs가 따로 내장되어 있어 외부 모듈을 불러오지 않아도 된다.
+        */
+        app.set ('views', './views');
+        app.set ('view engine', 'ejs');
+
+        app.get('/', function(request, response, next ) {
+            client.query ('SELECT * from portfolio', (error, results, fields) => {
+                ejs.render ('webdesign_portfolio.html', {
+                    title: "id",
+                    data: result
+                });
+            });
+         });
     </li>
 </ul>
 <ul>
-    <li><b>node.js mysql express</b></li>
+    <li><b>웹서버에서 데이터 조회하기 테스트</b></li>
+    <li>
+        /* createConnection (user, password); */
+        const mysql = require ('mysql');
+        const express = require ('express');
+
+        let client = mysql.createConnection ({
+            host: 'localhost',
+            user: 'root',
+            password: 'qkr8dbs6tj4@',
+            database: 'mydb'
+        });
+
+        /* use mydb */
+        client.connect();
+
+        /* 객체 호출 */
+        let app = express();
+
+        /* 데이터를 미들웨어 함수로 응답하기 */
+        app.get('/', function(request, response, next ) {
+            client.query ('SELECT * from portfolio', (error, results, fields) => {
+                response.send (results);
+            });
+        });
+
+        /* server run */
+        app.listen (3000);
+    </li>
 </ul>
 <ul>
     <li><b>CRUD</b></li>
@@ -156,7 +228,7 @@
 
                 /* 웹서버 생성 */
                 let app = express();
-                app.user(bodyParser.urlencoded( { extended: false} )); //post를 사용하기 때문에 인코딩을 해야한다.
+                app.use(bodyParser.urlencoded( { extended: false} )); //post를 사용하기 때문에 인코딩을 해야한다.
                 /* db로 접속 .get 메소드를 사용한다. */
                 app.get('/', (request, response) )=> { //db로 접속해서 데이터를 가져와서, 아래 파일에 데이터를 뿌려버린다.
                     fs.readFile('게시판명.html', 'utf-8', (error, data) => {
