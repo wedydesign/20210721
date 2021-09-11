@@ -1,0 +1,43 @@
+/* Mobile CSS */
+@media screen and (max-width: 960px) {
+    body {
+      margin: 0;
+    }
+    body * {
+      margin: 0;
+      padding: 0;
+      font: "맑은고딕";
+      font-size: "16px";
+      line-height: 1.5;
+    }
+    #logo {
+      width: 25%;
+    }
+    ul {
+      height: 48px;
+    }
+    li {
+      list-style: none;
+      float: left;
+      margin-right: 40px;
+      line-height: 48px;
+      font-weight: bold;
+    }
+    .on{
+      font-weight: normal;
+      color: hsl( 0, 0%, 20% );
+    }
+    .fa-bars {
+      display: block;
+    }
+    nav {
+      display: none; 
+    }
+    .nav_on {
+      position: absolute;
+      z-index: 999;
+      top: 0;
+      background-color: white;
+      display: block;
+    }
+  }

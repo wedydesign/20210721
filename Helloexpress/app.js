@@ -48,6 +48,7 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
+//
 let client = mysql.createConnection ({
   host: 'localhost',
   user: 'root',
@@ -67,6 +68,5 @@ app.get ('/views', function(request, response, next ) { //라우터
       } );
   });
 });
-
 
 app.listen(3000); //server run...
