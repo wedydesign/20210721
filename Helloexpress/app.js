@@ -57,8 +57,6 @@ let client = mysql.createConnection ({
 
 client.connect(); //database run...
 
-let app = express(); //익스프레스 객체 생성
-
 app.get ('/views', function(request, response, next ) { //라우터
   fs.readFile ('./views/webdesign_portfolio.html', 'utf-8', (error, data) => { //ejs페이지 불러오기
       client.query ('SELECT * from portfolio', (error, results, fields) => { //데이터 조회
