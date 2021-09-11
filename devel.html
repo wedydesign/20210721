@@ -13,33 +13,34 @@
 <ul>
     <li><b>mysql</b></li>
     <li>node.js 다운로드</li>
-    <li>(MySQL다운하기 전에 win+x> y> 이 pc의 이름 바꾸기> 한글이름을 영문이름으로... 한글이름으로 했다가 오류나면 재설치 해야 합니다.)</li>
-    <li>(재설치 시, C\programData    (programFiles가 아니다!!!!)    \mySQL를 삭제해야 합니다.)</li>i>
+    <li>MySQL 다운로드하기 전 주의사항</li>
+        <ul>
+            <li>(MySQL다운하기 전에 win+x> y> 이 pc의 이름 바꾸기> 한글이름을 영문이름으로... 한글이름으로 했다가 오류나면 재설치 해야 합니다.)</li>
+            <li>(재설치 시, C\programData    (programFiles가 아니다!!!!)    \mySQL를 삭제해야 합니다.)</li>
+        </ul>
     <li>MySQL 다운로드</li>
     <ul>
         <li>https://downloads.mysql.com/archives/installer/</li>
         <li>설치는 NEXT 버튼을 계속 클릭하고, 마지막에 root 비밀번호를 잊어서는 안 됩니다.</li>
     </ul>
-    <li><b>Mysql version command line로 SQL명령문을 사용하여 데이터베이스를 다룬다.</b></li>
+    <li><b>node.js mysql 예제</b></li>
     <ul>
-        <li>Mysql version command line 또는 mysql -u root -p //vscode터미널에서 mysql 커멘드라인 열기</li>
-        <li>비밀번호</li>
-        <li>create database 데이터베이스명;</li>
-        <li>use mydb;</li>
-        <li>create table 테이블명 ();</li>
-            <ul>
-                <li>creat table 테이블명 (</li>
-                <li>예제) id int primary key,</li>
-                <li>예제) name varchar</li>
-                <li>필드명 자료형 필드의 속성명</li>
-                <li>자료형: varchar 문자열, int 정수 숫자, double 실수 숫자.</li>
-                <li>필드의 속성명 : NOT NULL 반드시 입력해야 하는 필드, AUTO_INCREMENT 자동으로 숫자가 증가하게 만든다. PRIMARY KEY 기본 키로 지정한다.</li>
-                <li>테이블 생성할 때 표의 형태까지 만드는구나, 구글링하면 추가, 삭제, 수정있당.</li>
-                <li>) ;</li>
-            </ul>
-    </ul>
-    <li><b>mysql 테스트</b></li>
-    <ul>
+        <li>터미널</li>
+        <li>mysql -u root -p //mysql 커멘드라인</li>
+        <li>root 비밀번호</li>
+        <li>create database 데이터베이스명; //</li>
+        <li>use mydb; //mydb run</li>
+        <li>create table 테이블명 (필드명 자료형 필드속성, 반복);</li>
+        <ul>
+            <li>자료형: varchar 문자열, int 정수 숫자, double 실수 숫자.</li>
+            <li>필드속성 : NOT NULL 반드시 입력해야 하는 필드, AUTO_INCREMENT 자동으로 숫자가 증가하게 만든다. PRIMARY KEY 기본 키로 지정한다.</li>
+            <li>테이블 생성할 때 표의 형태까지 만드는구나. 나중에 수정하는 방법도 있구나.</li>
+            <li>예제)</li>
+            <li>creat table bla (</li>
+            <li>    id int primary key,</li>
+            <li>    name varchar</li>
+            <li>) ;</li>
+        </ul>
         <li>npm install mysql</li>
         <li>
             /* createConnection (user, password); */
@@ -48,14 +49,14 @@
             let client = mysql.createConnection ({
                 host: 'localhost',
                 user: 'root',
-                password: 'qkr8dbs6tj4@',
+                password: '****,
                 database: 'mydb'
             });
 
             /* db실행 */
             client.connect();
 
-            /* query ('sql', (에러를 받는 매개변수, 접속결과를 받는 매개변수)); */
+            /* query ('sql', (에러를 받는 매개변수, 접속결과를 받는 매개변수, 매개변수)); */
             client.query ('SELECT * from portfolio', (error, results, fields) => {
                 if (!error) {
                     console.log(results); //접속결과로 어디가 문제이다를 알 수 있다.
@@ -65,21 +66,25 @@
                 }
             });
         </li>
-        <li>node db_connection</li>
     </ul>
 </ul>
 <ul>
     <li><b>express</b></li>
-    <li>익스프레스 프로젝트를 깃허브에 생성할 수 있구나. 원래는 애플리케이션을 생성할 때, 직접 다 쓰고 테스트하면 백날 걸리는데 쉽게 한다.</li>
-    <li>npm install express</li>
-    <li>익스프레스 프로젝트 생성</li>
+    <li>애플리케이션 생성 예제</li>
+    <ul>
+        <li>npm install express</li>
         <li>express Helloexpress</li>
         <li>cd Helloexpress</li>
-        <li>npm install //package.json 안에 express 메모함.</li>
-        <li>SET DEBUG=helloexpress:* & npm start //웹서버 run</li>
+        <li>npm install //package.json</li>
+        <li>SET DEBUG=helloexpress:* & npm start //server run</li>
         <li>127.0.0.1:3000</li>
     </ul>
-    <li><b>디렉토리 구조</b></li>
+    <li>애플리케이션을 깃허브에 생성할 수 있구나. 원래는 애플리케이션을 생성할 때, 직접 다 쓰고 테스트하면 백날 걸리는데 쉽게 한다.</li>
+    <ul>
+        <li>git icon > + > v > 커밋메시지아무거나 > 왼쪽 하단 새로고침 버튼.</li>
+        <li>[변경된 사항이 1000개 정도 있을텐데, 이거 1000개가 다 해체되서 올라가는 거 아니야?라고 걱정할 필요가 없다. 폴더채로 업로드된다.]</li>
+    </ul>
+    <li>애플리케이션 디렉토리 설명</li>
     <ul>
         <li>bin 폴더는 프로그램 실행파일이 있고 www 파일을 싱행해서 프레임워크를 실행한다.</li>
         <li>public 폴더는 express 모듈의 static 미들웨어를 사용하여 웹 서버에 로딩하고 자바스크립트, css, 그림파일 등의 리소스 파일을 생성한다.</li>
@@ -87,8 +92,7 @@
         <li>views 폴더는 .ejs(ejs모듈은 표현식을 HTML 형식으로 변환한다.) .jade(jade 모듈은 기본 형식을 html 문자열로 바꿀 수 있는 함수를 생성함)</li>
         <li>app.js는 프로젝트의 중심이 되는 파일이며 package.json 파일은 현재 프로젝트와 관련된 정보와 모듈을 설치하는데 필요한 내용을 담고 있다.</li>
     </ul>
-    <li>git icon > + > v > 커밋메시지아무거나 > 왼쪽 하단 새로고침 버튼. [변경된 사항이 1000개 정도 있을텐데, 이거 1000개가 다 해체되서 올라가는 거 아니야?라고 걱정할 필요가 없다. 폴더채로 업로드된다.]</li>
-    <li><b>express 테스트</b></li>
+    <li>node.js express 예제</li>
     <li>
         let express = require ('express');
         let app = express(); // 객체, node.js는 객체를 이벤트라고 하는구나
