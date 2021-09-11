@@ -176,12 +176,16 @@
 <ul>
     <li>인스턴스</li>
     <li>카페24 node.js 호스팅 구입</li>
-    <li>app.js를 web.js로 파일명을 수정하기 //카페24는 기본파일명이 web입니다.</li>
-    <li>app.listen (8001); //카페24 포트번호는 8001입니다.</li>
-    <li>package.json 내에 start 수정. "start": "node ./web.js" //node web</li>
-    <li>로컬 서버에서는 이 코드가 없어도 실행이 되지만 cafe24에 배포할 때는 아래 코드가 꼭 필요합니다.</li>
-    <li>app.set('views', __dirname + '/views');</li>
-    <li>ssh키 생성</li>
+    <li>애플리케이션 구조 수정</li>
+    <ul>
+        <li>/bin/www.js를 web.js로 파일명을 수정하기.</li>
+        <li>web.js내 포트번호를 var port = normalizePort(8001);로 수정하기. //개인별로 다를 수 있으니 확인하기. cafe24 나의 서비스현황>앱생성관리>포트번호</li>
+        <li>web.js를 bin폴더 밖으로 꺼내기. 그리고 bin폴더 삭제하기.</li>
+        <li>package.json내 "start": "node ./web.js"로 수정하기.</li>
+        <li>app.js내 app.set('viw engine', 'ejs')로 수정하기.</li>
+        <li>필요없는 jade파일 삭제하기.</li>
+    </ul>
+    <li>cafe24 node.js는 아래 셋팅만 해주면 그냥 깃허브 커밋할 때, 자동으로 복사해서 신경끄면 된다.</li>
     <ul>
         <li>ssh-keygen -t rsa -C “<카페 24 도메인 이름>” //엔터 3번쳐서 넘어가도록 합니다.</li>
         <li>c폴더내 사용자 폴더에 ssh 키가 생성 됩니다. 숨겨져 있을 수 있으므로 콘솔에서 ls, cd .ssh명령어로 찾을 수 있습니다.</li>
@@ -190,7 +194,7 @@
         <li>호스팅관리> 앱 생성/관리> 앱생성> key할당> 저장</li>
         <li>settings> SSH and GPG keys>new ssh key > 이곳에 똑같이 등록해 주면 됩니다</li>
     </ul>
-    <li>git icon> +> v> 커밋메시지아무거나> 오른쪽아래 새로고침 icon</li>
+    
 </ul>
 <ul>
     <li><b>CRUD</b></li>
