@@ -31,10 +31,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
 app.get('/', (request, response) => {
-  ejs.render ('index');
-} );
+  fs.readFile ('./views/index.html', 'utf-8', (error, data) => { //ejs페이지 불러오기
+    client.query ('SELECT * from portfolio', (error, results, fields) => { //데이터 조회
+        let output = ejs.render (data, {
+          data: results
+      }); //<% %>을 html로 변환
+        response.send (output); //웹서버에 전송
+    });
+  });
+});
 app.use('/users', usersRouter);
 
 app.get ('/views', function(request, response, next ) { //라우터
