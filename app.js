@@ -9,9 +9,9 @@ const fs = require ('fs');
 
 let client = mysql.createConnection ({
   host: 'localhost',
-  user: 'wedydesign', //카페24아이디
+  user: 'wedydesign', //카페24 아이디
   password: 'qkr8dbs6tj4@', //비밀번호
-  database: 'wedydesign' //카페24아이디
+  database: 'wedydesign' //카페24 아이디
 }); //mysql 객체 생성
 
 client.connect(); //database run...
@@ -57,6 +57,8 @@ app.get ('/views', function(request, response, next ) { //라우터
       } );
   });
 });
+
+app.listen(8001); //server run...
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
