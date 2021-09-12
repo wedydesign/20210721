@@ -1,6 +1,6 @@
 /* ajax */
 $(function () {
-  $( '#container' ).load( 'main.html' );
+  $( '#container' ).load( 'views/main.html' );
       var nav = $( 'nav li' );
       
       nav.eq(0).click( function () {
@@ -9,7 +9,7 @@ $(function () {
       $( 'li' ).eq(0).addClass( 'on' );
       } );
       nav.eq(1).click( function () {
-      $( '#container' ).load( 'about_me.html' );
+      $( '#container' ).load( 'views/about_me.html' );
       $( 'li' ).removeClass( 'on' );
       $( 'li' ).eq(1).addClass( 'on' );
       } );

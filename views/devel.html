@@ -312,6 +312,10 @@
         <li>??로컬저장소의 애플리케이션 폴더를 내용물은 전부 밖으로 꺼내고, 폴더 지우기.</li>
         <li>app.js내 app.use('/', indexRouter);를 삭제하기. //만약 있으면 라우터 index.html가 에러뜸</li>
         <li>app.js내 app.listen();가 있으면 삭제하기. node app해서 웹서버를 실행시키는게 아니고 npm start를 쓰는데 웹서버가 중복으로 실행되서 에러뜸</li>
+        <li>app.js내 app.use(express.static(path.join(__dirname, 'public')));를 아래와 같이 수정. css랑 js랑 html의 경로랄까</li>
+        <li>app.use('/public', express.static(path.join(__dirname, 'public/'))); // public/bla.css</li>
+        <li>app.use('/views', express.static(path.join(__dirname, 'views/'))); // views/index.html</li>
+        </li>
     </ul>
     <li></li>
     <ul>
