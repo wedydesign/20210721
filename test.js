@@ -5,9 +5,9 @@ const fs = require ('fs');
 
 let client = mysql.createConnection ({
     host: 'localhost',
-    user: 'root',
-    password: 'qkr8dbs6tj4@',
-    database: 'mydb'
+    user: 'wedydesign', //카페24아이디
+    password: 'qkr8dbs6tj4@', //비밀번호
+    database: 'wedydesign' //카페24아이디
 }); //mysql 객체 생성
 
 client.connect(); //database run...
@@ -15,6 +15,12 @@ client.connect(); //database run...
 let app = express(); //익스프레스 객체 생성
 
 app.set('views', __dirname + '/views');
+
+app.get('/', function (request, response, next) {
+    response.send ('index', function (error, results) {
+        client.query ('CREATE TABLE portfolio (id int, name varchar(255));');
+    });
+});
 
 app.get ('/views', function(request, response, next ) { //라우터
     fs.readFile ('./views/webdesign_portfolio.html', 'utf-8', (error, data) => { //ejs페이지 불러오기
