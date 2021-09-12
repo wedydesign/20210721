@@ -179,10 +179,11 @@
     <li>애플리케이션 구조 수정</li>
     <ul>
         <li>/bin/www.js를 web.js로 파일명을 수정하기.</li>
-        <li>web.js내 포트번호를 var port = normalizePort(8001);로 수정하기. //개인별로 다를 수 있으니 확인하기. cafe24 나의 서비스현황>앱생성관리>포트번호</li>
+        <li>web.js내 포트번호를 var port = normalizePort(process.env.PORT || '8001');로 수정하기. //개인별로 다를 수 있으니 확인하기. cafe24 나의 서비스현황>앱생성관리>포트번호</li>
         <li>web.js를 bin폴더 밖으로 꺼내기. 그리고 bin폴더 삭제하기.</li>
+        <li>bin폴더를 밖으로 꺼냈으니 web.js의 첫번째 코드의 디렉토리 경로도 바꿔줘야 한다. var app = require('./app'); </li>
+        <li>app.js내 app.set('viw engine', 'ejs')로 수정하기. //jade가 아니라 html을 이용하고 싶다면 ejs로 수정해줘야 한다.</li>
         <li>package.json내 "start": "node ./web.js"로 수정하기.</li>
-        <li>app.js내 app.set('viw engine', 'ejs')로 수정하기.</li>
         <li>필요없는 jade파일 삭제하기.</li>
         <li>??로컬저장소의 애플리케이션 폴더를 내용물은 전부 밖으로 꺼내고, 폴더 지우기.</li>
     </ul>
