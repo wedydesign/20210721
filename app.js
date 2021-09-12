@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.get('/', (request, response) => {
-  response.send ('./views/index.html');
+  ejs.render ('index');
 } );
 app.use('/users', usersRouter);
 
@@ -44,11 +44,9 @@ app.get ('/views', function(request, response, next ) { //라우터
               data: results
           }); //<% %>을 html로 변환
           response.send (output); //웹서버에 전송
-      } );
+      });
   });
 });
-
-app.listen(8001); //server run...
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
