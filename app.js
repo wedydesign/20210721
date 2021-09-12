@@ -8,9 +8,9 @@ const ejs = require ('ejs');
 const fs = require ('fs');
 
 let client = mysql.createConnection ({
-  host: 'localhost',
+  host: 'wedydesign.cafe24app.com', //원래는 localhost
   user: 'wedydesign', //카페24 아이디
-  password: 'qkr8dbs6tj4@', //비밀번호
+  password: 'dyanf846@', //비밀번호
   database: 'wedydesign' //카페24 아이디
 }); //mysql 객체 생성
 
@@ -32,10 +32,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.get('/product', (request, response) => {
-  response.render('product/', {
-    title : 'product index page'
-  } );
+app.get('/', (request, response) => {
+  response.send ('./views/index.html');
 } );
 app.use('/users', usersRouter);
 

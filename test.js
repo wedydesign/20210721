@@ -4,10 +4,10 @@ const ejs = require ('ejs');
 const fs = require ('fs');
 
 let client = mysql.createConnection ({
-    host: 'localhost',
-    user: 'wedydesign', //카페24아이디
-    password: 'qkr8dbs6tj4@', //비밀번호
-    database: 'wedydesign' //카페24아이디
+    host: 'wedydesign.cafe24app.com', //원래는 localhost
+    user: 'wedydesign', //카페24아이디 원래는 root
+    password: 'dyanf846@', //비밀번호
+    database: 'wedydesign' //카페24아이디 원래는 mydbb
 }); //mysql 객체 생성
 
 client.connect(); //database run...
