@@ -37,14 +37,6 @@ app.get('/', (request, response) => {
 } );
 app.use('/users', usersRouter);
 
-
-//mysql 테이블생성
-app.get('/', function (request, response, next) {
-  response.send ('index', function (error, results) {
-      client.query ('CREATE TABLE portfolio (id int, name varchar(255));');
-  });
-});
-
 app.get ('/views', function(request, response, next ) { //라우터
   fs.readFile ('./views/webdesign_portfolio.html', 'utf-8', (error, data) => { //ejs페이지 불러오기
       client.query ('SELECT * from portfolio', (error, results, fields) => { //데이터 조회
