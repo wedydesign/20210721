@@ -72,9 +72,35 @@ app.get('/portfolio', (request, response) => {
     client.query ('SELECT * from portfolio', (error, results) => { //데이터 조회
         let output = ejs.render (data, {
           data: results
-       }); //<% %>을 html로 변환
+        }); //<% %>을 html로 변환
         response.send (output); //웹서버에 전송
     });
+  });
+});
+
+
+/* portfolio_read.html 라우터 */
+app.get ('/portfolio_read', (request, response) => {
+  fs.readFile ('./views/portfolio_read.html', 'utf-8', (error, results) => {
+    let output = ejs.render (data, {
+      data: results
+    }); //<% %>을 html로 변환
+    response.send (output); //웹서버에 전송
+  });
+})
+
+/*
+  portfolio_read.html
+  <form method="post">
+    <input type="text" name="id"/>
+    <input type="text" name="name"/>
+    <input type="submit"/>
+  </form>
+*/
+app.post('/portfolio_read', (request, response) => {
+  let body = request.body; //요청
+  client.query ('insert into portfolio (id, name) values (?,?)', [body.id, body.name], (error,results) => {
+    response.redirect ('/');
   });
 });
 

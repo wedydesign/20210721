@@ -255,21 +255,23 @@
         <ul>
             <li>INSERT INTO (필드,필드) VALUE (데이터, 데이터) 형식으로 퀴리문을 작성한다.</li>
             <li>
-                app.get('/insert', (request, response) => {
-                    fs.readFile('게시판명.html'm 'utf-8', (error, data) => {
-                        response.end(data);
-                    } );
-                } );
+                /* 글쓰는 html 라우터 */
+                /* portfolio_read */
+                app.get('/portfolio_read', (request, response) => {
+                fs.readFile('./views/portfolio_read.html', 'utf-8', (error, data) => {
+                    response.end(data);
+                });
+                });
+                /* 실질적으로 데이터베이스에 저장하는 얘 */
                 app.post('/insert', (request, response) => {
                     let body = request.body;
                     client.query('INSERT INTO 테입ㄹ명 (필드) VALUE (?, ?, ?')'', [body.필드명]
                 } );
-                /%
-                게시판.html에서
+            </li>
+            <li>
                 form method="post"
                 ... input type="text" name="필드명"
                 ... input type="submit"
-                %/
             </li>
         </ul>
         <li>데이터 삭제</li>
