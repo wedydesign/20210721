@@ -14,16 +14,8 @@ client.connect(); //database run...
 
 let app = express(); //익스프레스 객체 생성
 
-app.set('views', __dirname + '/views');
-
-app.get('/', function (request, response, next) {
-    response.send ('index', function (error, results) {
-        client.query ('CREATE TABLE portfolio (id int, name varchar(255));');
-    });
-});
-
-app.get ('/views', function(request, response, next ) { //라우터
-    fs.readFile ('./views/webdesign_portfolio.html', 'utf-8', (error, data) => { //ejs페이지 불러오기
+app.get ('/', function(request, response, next ) { //라우터
+    fs.readFile ('./views/index.html', 'utf-8', (error, data) => { //ejs페이지 불러오기
         client.query ('SELECT * from portfolio', (error, results, fields) => { //데이터 조회
             let output = ejs.render (data, {
                 data: results
@@ -34,4 +26,4 @@ app.get ('/views', function(request, response, next ) { //라우터
 });
 
 
-app.listen(8001); //server run...
+app.listen(3000); //server run...

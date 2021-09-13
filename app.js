@@ -9,6 +9,7 @@ const fs = require ('fs');
 
 let client = mysql.createConnection ({
   host: 'wedydesign.cafe24app.com', //원래는 localhost
+  port: 3306,
   user: 'wedydesign', //카페24 아이디
   password: 'dyanf846@', //비밀번호
   database: 'wedydesign' //카페24 아이디
@@ -16,14 +17,11 @@ let client = mysql.createConnection ({
 
 client.connect(); //database run...
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
 var app = express(); //익스프레스 객체 생성
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -32,9 +30,10 @@ app.use(cookieParser());
 app.use('/public', express.static(path.join(__dirname, 'public/')));
 app.use('/views', express.static(path.join(__dirname, 'views/')));
 
+/* index.html 라우터 */
 app.get('/', (request, response) => {
   fs.readFile ('./views/index.html', 'utf-8', (error, data) => { //ejs페이지 불러오기
-    client.query ('SELECT * from portfolio', (error, results, fields) => { //데이터 조회
+    client.query ('SELECT * from portfolio', (error, results) => { //데이터 조회
         let output = ejs.render (data, {
           data: results
        }); //<% %>을 html로 변환
@@ -42,7 +41,67 @@ app.get('/', (request, response) => {
     });
   });
 });
-app.use('/users', usersRouter);
+
+/* about.html 라우터 */
+app.get('/about', (request, response) => {
+  fs.readFile ('./views/about.html', 'utf-8', (error, data) => { //ejs페이지 불러오기
+    client.query ('SELECT * from portfolio', (error, results) => { //데이터 조회
+        let output = ejs.render (data, {
+          data: results
+       }); //<% %>을 html로 변환
+        response.send (output); //웹서버에 전송
+    });
+  });
+});
+
+/* service.html 라우터 */
+app.get('/service', (request, response) => {
+  fs.readFile ('./views/service.html', 'utf-8', (error, data) => { //ejs페이지 불러오기
+    client.query ('SELECT * from portfolio', (error, results) => { //데이터 조회
+        let output = ejs.render (data, {
+          data: results
+       }); //<% %>을 html로 변환
+        response.send (output); //웹서버에 전송
+    });
+  });
+});
+
+/* portfolio.html 라우터 */
+app.get('/portfolio', (request, response) => {
+  fs.readFile ('./views/portfolio.html', 'utf-8', (error, data) => { //ejs페이지 불러오기
+    client.query ('SELECT * from portfolio', (error, results) => { //데이터 조회
+        let output = ejs.render (data, {
+          data: results
+       }); //<% %>을 html로 변환
+        response.send (output); //웹서버에 전송
+    });
+  });
+});
+
+/* contact.html 라우터 */
+app.get('/contact', (request, response) => {
+  fs.readFile ('./views/contact.html', 'utf-8', (error, data) => { //ejs페이지 불러오기
+    client.query ('SELECT * from portfolio', (error, results) => { //데이터 조회
+        let output = ejs.render (data, {
+          data: results
+       }); //<% %>을 html로 변환
+        response.send (output); //웹서버에 전송
+    });
+  });
+});
+
+/* reminder.html 라우터 */
+app.get('/reminder', (request, response) => {
+  fs.readFile ('./views/reminder.html', 'utf-8', (error, data) => { //ejs페이지 불러오기
+    client.query ('SELECT * from portfolio', (error, results) => { //데이터 조회
+        let output = ejs.render (data, {
+          data: results
+       }); //<% %>을 html로 변환
+        response.send (output); //웹서버에 전송
+    });
+  });
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

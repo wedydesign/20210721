@@ -1,4 +1,26 @@
-<p>20210909</p>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Keywords" content="인포그래픽,HTML,타이포그래피,홈페이지,웹디자인,기획,상세페이지제작,상세페이지,퍼블리싱,웹디자이너,웹퍼블리셔,반응형홈페이지,반응형웹,웹퍼블리싱,웹디자인포트폴리오,웹사이트제작,포토샵,일러스트,브랜딩디자인,홈페이지디자인,웹기획,홈페이지유지보수,웹퍼블리셔포트폴리오,웹포트폴리오">
+  <meta name="Description" content="검색 결과에 표시되는 문자를 지정합니다.">
+  <meta name="Author" content="박윤서">
+  <mata name="Publisher" content="wedydesign"></mata>
+  <title>박윤서 포트폴리오</title>
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="/public/header.js"></script>
+  <!-- style -->
+  <link rel="stylesheet" href="/public/browser.css">
+  <link rel="stylesheet" href="/public/mobile.css">
+  <!-- font awsome -->
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' integrity='sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==' crossorigin='anonymous'/>
+</head>
+<body>
+  <header></header>
+  <p>20210909</p>
 <ul>
     <li><b>깃 명령어 필요없이, vscode github 연동.</b></li>
     <li>깃허브로 계정 생성</li>
@@ -315,7 +337,15 @@
         <li>app.js내 app.use(express.static(path.join(__dirname, 'public')));를 아래와 같이 수정. css랑 js랑 html의 경로랄까</li>
         <li>app.use('/public', express.static(path.join(__dirname, 'public/'))); // public/bla.css</li>
         <li>app.use('/views', express.static(path.join(__dirname, 'views/'))); // views/index.html</li>
-        </li>
+        <li>index.html내 css랑 js를 public/bla.css로 바꾸기.</li>
+        <li>jQuery의 ajax를 했다면 경로를 views/header.html로 바꿔줘야함.</li>
+        <li>ejs는 jQuery의 ajax로 .load();하는 html까지 변환시켜주지 않아서ㅠㅠ index.html에 쓴 표현식은 잘 되는데, main.html에 쓴 표현식은 안된다.. index/ contants를 했다면 이 구조가 아닌  contants/ header와 footer로 다시 쓰기. //바꾸니까 잘된다... 됐다. 말을 말자.</li>
+        <li>ajax를 안쓰기로 했으니까 각 페이지 라우터 연결하기. // 나는 해더나 풋터에 검색창을 넣지 않아서 길면 복잡하니까, ajax로 따로 쓰는데 해더에 검색창을 하려면 본격적으로 ajax공부를 하던가 길게 쓰던가 해야겠지. 나는 해더 위나 아래에 넣어야겠다. 만약 ajax를 아예 안쓴다면 그리고 네비게이션 꾸미는 jQuery on 클래스를 css로 다시 쓰기.ㅠㅠ //현제 페이지 표시할려고 만든건데 각 페이지로 하면 필요없어</li>
+        <li>header.html내 네비게이션 텍스트를 a태그와 각 페이지 라우터 경로로 감싸기.</li>
+        <li>라우터 폴더 삭제하기. //이건 케바케.나눠서 쓰겠다하면... 근데 기본경로가 두 번 호출되면 에러뜨니까 app에 쓰던지 여기에 쓰던지 둘 중 하나를 선택하기.</li>
+        <li>app.js내 라우터 변수들이랑, app.use('/users', usersRouter); 삭제하기.//이건 케바케. 나눠서 쓰겠다하면... 근데 기본경로가 두 번 호출되면 에러뜨니까 app에 쓰던지 여기에 쓰던지 둘 중 하나를 선택하기.</li>
+        <li>app.js내 app.get ('/', (error, response) => {});로 기본 라우터 설정하기.</li>
+        <li>app.js내 app.set('views', path.join(__dirname, 'views'));랑 app.set('view engine', 'ejs'); 삭제하기. //이건 케바케. fs모듈과 ejs모듈을 쓰면...</li>
     </ul>
     <li></li>
     <ul>
@@ -344,12 +374,14 @@
         <li>카페24> 호스팅관리> 서비스 사용현황> MySQL 외부 IP 접근설정> 설정하기> DB 비밀번호 기억하기> ip주소 구글링 복붙</li>
         <li>터미널을 mysql 파일위치로 cd C:/Program Files/MySQL/MySQL Server 5.7/bin</li>
         <li>mysql 커멘드라인 켜기. mysql --host 도메인 -u DB아이디 --port 3306 -p</li>
+        <li>mysql --host wedydesign.cafe24app.com -u wedydesign --port 3306 -p</li>
         <li>됐당!</li>
         <li>use wedydesign</li>
         <li>create table portfolio(</li>
         <li>id int,</li>
         <li>name varchar</li>
         <li>);</li>
+        <li>insert into (id, name) value (1, 20210905); //테스트용 데이터. 테이블내 공백시 []라고 뜸.</li>
     </ul>
 </ul>
 <ul>
@@ -362,3 +394,6 @@
     <li>카페24 재실행하면서 테스트하기 진짜 귀찮네... 아 에러메시지도 안뜨는구나 npm start로 로컬웹서버에서 테스트할 수 있음^^.</li>
     <li>이야 끝났다.</li>
 </ul>
+  <footer></footer>
+</body>
+</html>
